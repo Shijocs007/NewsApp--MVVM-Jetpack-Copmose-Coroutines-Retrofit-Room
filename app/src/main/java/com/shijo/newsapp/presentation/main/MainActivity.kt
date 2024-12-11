@@ -1,4 +1,4 @@
-package com.shijo.newsapp
+package com.shijo.newsapp.presentation.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
