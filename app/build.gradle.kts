@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation(libs.google.dagger.hilt)
+    implementation(libs.google.dagger.hilt.compose)
     kapt(libs.google.dagger.hilt.compiler)
     implementation(libs.androidx.splash)
     implementation(libs.retrofit)
