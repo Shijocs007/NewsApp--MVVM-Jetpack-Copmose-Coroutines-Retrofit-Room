@@ -20,6 +20,7 @@ serialization = "1.6.3"
 ksp = "2.0.21-1.0.27"
 kapt = "1.9.0"
 hilt_navigation = "1.2.0"
+composeMaterial = "1.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -53,6 +54,7 @@ kapt-room-compiler = {group = "androidx.room", name = "room-compiler", version.r
 room-paging = {group = "androidx.room", name = "room-paging", version.ref = "room_version"}
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
+androidx-compose-material = { group = "androidx.wear.compose", name = "compose-material", version.ref = "composeMaterial" }
 
 
 [plugins]
