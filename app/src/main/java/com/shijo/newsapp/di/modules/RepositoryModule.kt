@@ -1,4 +1,4 @@
-package com.shijo.newsapp.di
+package com.shijo.newsapp.di.modules
 
 import com.shijo.newsapp.data.repository.OnboardingRepositoryImpl
 import com.shijo.newsapp.domain.repository.OnboardingRepository

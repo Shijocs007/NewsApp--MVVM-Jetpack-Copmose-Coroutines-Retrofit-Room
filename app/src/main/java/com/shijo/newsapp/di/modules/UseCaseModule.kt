@@ -1,4 +1,4 @@
-package com.shijo.newsapp.di
+package com.shijo.newsapp.di.modules
 
 import com.shijo.newsapp.domain.repository.OnboardingRepository
 import com.shijo.newsapp.domain.usecases.onboarding.GetOnboardingStatus

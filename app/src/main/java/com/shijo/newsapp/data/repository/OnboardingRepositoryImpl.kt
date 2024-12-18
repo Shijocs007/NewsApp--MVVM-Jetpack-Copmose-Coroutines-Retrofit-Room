@@ -1,6 +1,5 @@
 package com.shijo.newsapp.data.repository
 
-import android.app.Application
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit

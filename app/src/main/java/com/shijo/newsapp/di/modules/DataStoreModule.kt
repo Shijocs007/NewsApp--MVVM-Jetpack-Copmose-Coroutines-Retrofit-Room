@@ -1,4 +1,4 @@
-package com.shijo.newsapp.di
+package com.shijo.newsapp.di.modules
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object DataStoreModule {
 
     private val Context.dataStore by preferencesDataStore(name = Constants.NEWS_APP_DATASTORE_MANAGER)
 
@@ -23,4 +23,6 @@ object AppModule {
     fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
         return context.dataStore
     }
+
+
 }
