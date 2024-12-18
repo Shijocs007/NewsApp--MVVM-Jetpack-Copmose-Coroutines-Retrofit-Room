@@ -6,6 +6,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.shijo.newsapp.presentation.headlines.TopHeadlineViewModel
 import com.shijo.newsapp.presentation.home.HomeScreen
 import com.shijo.newsapp.presentation.onboarding.OnBoardingScreen
 import com.shijo.newsapp.presentation.onboarding.OnboardingViewModel
@@ -27,6 +28,7 @@ fun NavGraph(startDestination : Route) {
             )
         }
         composable<Route.HomeScreen> {
+            val viewModel: TopHeadlineViewModel = hiltViewModel()
             HomeScreen()
         }
 

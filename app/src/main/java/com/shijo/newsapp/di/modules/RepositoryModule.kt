@@ -1,6 +1,8 @@
 package com.shijo.newsapp.di.modules
 
+import com.shijo.newsapp.data.repository.NewsRepositoryImpl
 import com.shijo.newsapp.data.repository.OnboardingRepositoryImpl
+import com.shijo.newsapp.domain.repository.NewsRepository
 import com.shijo.newsapp.domain.repository.OnboardingRepository
 import dagger.Binds
 import dagger.Module
@@ -12,6 +14,9 @@ import dagger.hilt.android.components.ViewModelComponent
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun bindNewsRepository(onboardingRepositoryImpl: OnboardingRepositoryImpl): OnboardingRepository
+    abstract fun bindOnboardingRepository(onboardingRepositoryImpl: OnboardingRepositoryImpl): OnboardingRepository
+
+    @Binds
+    abstract fun bindNewsRepository(newsRepositoryImpl: NewsRepositoryImpl): NewsRepository
 
 }

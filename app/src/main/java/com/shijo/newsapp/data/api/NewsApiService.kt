@@ -10,5 +10,5 @@ interface NewsApiService {
 
     @Headers("X-Api-Key: $API_KEY")
     @GET("top-headlines")
-    suspend fun getHeadlines(@Query("country") country: String): TopHeadlinesResponse
+    suspend fun getTopHeadlines(@Query("country") country: String, @Query("pageSize") pageSize : Int = 50): TopHeadlinesResponse
 }
