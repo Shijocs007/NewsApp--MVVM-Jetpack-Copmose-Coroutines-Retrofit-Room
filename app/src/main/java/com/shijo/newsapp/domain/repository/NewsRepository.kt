@@ -1,7 +1,7 @@
 package com.shijo.newsapp.domain.repository
 
+import com.shijo.newsapp.data.models.Article
 import kotlinx.coroutines.flow.Flow
-import me.amitshekhar.newsapp.data.model.Article
 
 interface NewsRepository {
 

@@ -2,6 +2,7 @@ package com.shijo.newsapp.presentation.headlines
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.shijo.newsapp.data.models.Article
 import com.shijo.newsapp.domain.usecases.news.GetTopHeadLines
 import com.shijo.newsapp.presentation.common.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,7 +11,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import me.amitshekhar.newsapp.data.model.Article
 import javax.inject.Inject
 
 @HiltViewModel

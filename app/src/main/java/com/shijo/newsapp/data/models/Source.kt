@@ -1,10 +1,9 @@
-package me.amitshekhar.newsapp.data.model
-
+package com.shijo.newsapp.data.models
 import com.google.gson.annotations.SerializedName
 
 data class Source(
     @SerializedName("id")
-    val id: String? = null,
+    val id: String = "",
     @SerializedName("name")
     val name: String = "",
 )

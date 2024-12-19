@@ -1,5 +1,4 @@
-package me.amitshekhar.newsapp.data.model
-
+package com.shijo.newsapp.data.models
 import com.google.gson.annotations.SerializedName
 
 data class TopHeadlinesResponse(
