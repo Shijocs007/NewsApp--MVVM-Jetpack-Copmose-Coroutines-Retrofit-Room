@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.coil)
+    implementation(libs.coil.network)
     implementation(libs.datastore)
     implementation(libs.paging3)
     implementation(libs.paging3.compose)

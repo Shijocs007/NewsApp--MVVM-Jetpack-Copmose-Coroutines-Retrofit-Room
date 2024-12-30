@@ -11,7 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.shijo.newsapp.data.models.Article
 import com.shijo.newsapp.data.models.Source
+import com.shijo.newsapp.presentation.common.ErrorScreen
 import com.shijo.newsapp.presentation.common.NewsItem
+import com.shijo.newsapp.presentation.common.NewsItemShimmer
+import com.shijo.newsapp.presentation.common.NewsListShimmer
 import com.shijo.newsapp.presentation.common.UiState
 import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.Dimes.ExtraSmallPadding2
@@ -22,8 +25,12 @@ import com.shijo.newsapp.ui.theme.NewsAppTheme
 fun TopHeadlineScreen(uiState: UiState<List<Article>>) {
 
     when (uiState) {
-        is UiState.Error -> {}
-        UiState.Loading -> {}
+        is UiState.Error -> {
+            ErrorScreen(message = uiState.message)
+        }
+        UiState.Loading -> {
+            NewsListShimmer()
+        }
         is UiState.Success -> {
             LazyColumn(
                 modifier = Modifier

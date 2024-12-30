@@ -45,6 +45,7 @@ androidx-splash = { group = "androidx.core", name = "core-splashscreen", version
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 gson = { group = "com.squareup.retrofit2", name ="converter-gson", version.ref ="retrofit"}
 coil = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref ="coil"}
+coil-network = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref ="coil"}
 datastore = {group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore"}
 paging3 = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging3"}
 paging3-compose = {group = "androidx.paging", name = "paging-compose", version.ref = "paging3"}
