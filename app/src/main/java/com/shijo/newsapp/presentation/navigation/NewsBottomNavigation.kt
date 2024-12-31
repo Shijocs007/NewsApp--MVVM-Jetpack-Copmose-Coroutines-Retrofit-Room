@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.shijo.newsapp.ui.theme.NewsAppTheme
+import com.shijo.newsapp.utils.BottomNavigationItem
 
 
 @Composable
@@ -47,10 +48,6 @@ fun NewsBottomNavigation(
     }
 }
 
-data class BottomNavigationItem(
-    val label: String,
-    val icon: ImageVector,
-)
 
 
 @Preview

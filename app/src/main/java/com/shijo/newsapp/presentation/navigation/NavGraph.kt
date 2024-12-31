@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.shijo.newsapp.presentation.home.HomeScreen
+import com.shijo.newsapp.presentation.home.HomeViewModel
 import com.shijo.newsapp.presentation.onboarding.OnBoardingScreen
 import com.shijo.newsapp.presentation.onboarding.OnboardingViewModel
 
@@ -22,12 +23,17 @@ fun NavGraph(startDestination : Route) {
             OnBoardingScreen(
                 state = onboardingViewmodel.onboardingState.collectAsState().value,
                 onEvent = { event ->
-                    onboardingViewmodel.onEvent(event)
+                    onboardingViewmodel.onEvent(event = event)
                 }
             )
         }
         composable<Route.HomeScreen> {
-            HomeScreen()
+            val homeViewModel : HomeViewModel = hiltViewModel()
+            HomeScreen(
+                state = homeViewModel.state.collectAsState().value,
+                onEvent = {event ->
+                    homeViewModel.onEvent(event = event)
+                })
         }
 
     }
