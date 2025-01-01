@@ -1,4 +1,4 @@
-package com.shijo.newsapp.presentation.navigation
+package com.shijo.newsapp.presentation.home.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,7 +13,6 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.shijo.newsapp.ui.theme.NewsAppTheme
@@ -21,14 +20,14 @@ import com.shijo.newsapp.utils.BottomNavigationItem
 
 
 @Composable
-fun NewsBottomNavigation(
+fun HomeBottomNavigation(
     items: List<BottomNavigationItem>,
     selectedItem: Int,
     onItemClick: (Int) -> Unit
 ) {
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
-        containerColor = MaterialTheme.colorScheme.background,
+        containerColor = MaterialTheme.colorScheme.primary,
         tonalElevation = 10.dp
     ) {
         items.forEachIndexed { index, item ->
@@ -39,8 +38,8 @@ fun NewsBottomNavigation(
                 colors = NavigationBarItemDefaults.colors(
                     selectedIconColor = MaterialTheme.colorScheme.primary,
                     selectedTextColor = MaterialTheme.colorScheme.primary,
-                    unselectedIconColor = MaterialTheme.colorScheme.secondary,
-                    unselectedTextColor = MaterialTheme.colorScheme.secondary,
+                    unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
+                    unselectedTextColor = MaterialTheme.colorScheme.onPrimary,
                     indicatorColor = MaterialTheme.colorScheme.background
                 )
             )
@@ -55,7 +54,7 @@ fun NewsBottomNavigation(
 @Composable
 fun NewsBottomNavigationPreview() {
     NewsAppTheme(dynamicColor = false) {
-        NewsBottomNavigation(items = listOf(
+        HomeBottomNavigation(items = listOf(
             BottomNavigationItem(label = "Home", icon = Icons.Default.Home),
             BottomNavigationItem(label = "Search", icon = Icons.Default.Search),
             BottomNavigationItem(label = "Bookmarks", icon = Icons.Rounded.Star),

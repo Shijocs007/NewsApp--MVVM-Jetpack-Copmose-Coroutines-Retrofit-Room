@@ -8,7 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.shijo.newsapp.presentation.navigation.HomeNavGraph
-import com.shijo.newsapp.presentation.navigation.NewsBottomNavigation
+import com.shijo.newsapp.presentation.home.components.HomeBottomNavigation
+import com.shijo.newsapp.presentation.home.components.HomeTopBar
 import com.shijo.newsapp.presentation.navigation.Route
 
 @Composable
@@ -19,7 +20,7 @@ fun HomeScreen(
     val navController = rememberNavController()
     Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
         if (state.isBottomBarEnabled) {
-            NewsBottomNavigation(
+            HomeBottomNavigation(
                 items = state.bottomNavItems,
                 selectedItem = state.selectedItemIndex,
                 onItemClick = { index ->
@@ -43,9 +44,15 @@ fun HomeScreen(
                 }
             )
         }
-    }) {
-        val bottomPadding = it.calculateBottomPadding()
-        HomeNavGraph(modifier = Modifier.padding(bottom = bottomPadding), navController = navController)
+    },
+        topBar = {
+            HomeTopBar(country = state.selectedCountry)
+        }) {
+        val padding = it.calculateBottomPadding()
+        HomeNavGraph(
+            modifier = Modifier.padding(bottom = padding, top = padding),
+            navController = navController
+        )
     }
 
 }

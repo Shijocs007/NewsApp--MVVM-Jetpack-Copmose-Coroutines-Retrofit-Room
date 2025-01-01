@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Australia",
+    "code": "AU",
+    "flag": "🇦🇺"
+  },
+  {
+    "name": "Brazil",
+    "code": "BR",
+    "flag": "🇧🇷"
+  },
+  {
+    "name": "Canada",
+    "code": "CA",
+    "flag": "🇨🇦"
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "flag": "🇨🇳"
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "flag": "🇫🇷"
+  },
+  {
+    "name": "Germany",
+    "code": "DE",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "India",
+    "code": "IN",
+    "flag": "🇮🇳"
+  },
+  {
+    "name": "Italy",
+    "code": "IT",
+    "flag": "🇮🇹"
+  },
+  {
+    "name": "Sweden",
+    "code": "SE",
+    "flag": "🇸🇪"
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "flag": "🇦🇪"
+  },
+  {
+    "name": "United Kingdom",
+    "code": "GB",
+    "flag": "🇬🇧"
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "flag": "🇺🇸"
+  }
+]

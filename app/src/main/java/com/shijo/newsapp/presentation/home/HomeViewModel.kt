@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.rounded.Star
 import androidx.lifecycle.ViewModel
+import com.shijo.newsapp.data.models.Country
 import com.shijo.newsapp.utils.BottomNavigationItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +18,12 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     private val _state = MutableStateFlow(HomeState(
         isBottomBarEnabled = true,
         selectedItemIndex = 0,
-        bottomNavItems = bottomNavigationItems
+        bottomNavItems = bottomNavigationItems,
+        selectedCountry = Country(
+            name = "USA",
+            code = "us",
+            flag = "🇺🇸"
+        )
     ))
     val state: StateFlow<HomeState>  = _state
 
