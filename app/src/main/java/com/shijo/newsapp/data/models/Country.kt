@@ -5,3 +5,9 @@ data class Country(
     val code: String,
     val flag: String
 )
+
+val defaultCountry = Country(
+    name = "USA",
+    code = "us",
+    flag = "🇺🇸"
+)

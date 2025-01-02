@@ -2,7 +2,7 @@ package com.shijo.newsapp.presentation.headlines
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shijo.newsapp.data.models.Article
+import com.shijo.newsapp.domain.usecases.country.GetSelectedCountry
 import com.shijo.newsapp.domain.usecases.news.GetTopHeadLines
 import com.shijo.newsapp.presentation.common.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,13 +14,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TopHeadlineViewModel @Inject constructor(
-    private val getTopHeadLines: GetTopHeadLines
+class HeadlineViewModel @Inject constructor(
+    private val getTopHeadLines: GetTopHeadLines,
+    private val getSelectedCountry: GetSelectedCountry
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<UiState<List<Article>>>(UiState.Loading)
+    private val _uiState = MutableStateFlow<UiState<HeadLineState>>(UiState.Loading)
 
-    val uiState: StateFlow<UiState<List<Article>>> = _uiState
+    val uiState: StateFlow<UiState<HeadLineState>> = _uiState
 
     init {
         fetchTopHeadLines()
@@ -28,12 +29,18 @@ class TopHeadlineViewModel @Inject constructor(
 
     private fun fetchTopHeadLines() {
         viewModelScope.launch {
-            getTopHeadLines("us")
+            val selectedCountry = getSelectedCountry()
+            getTopHeadLines(selectedCountry.code)
                 .catch { e ->
                     _uiState.value = UiState.Error(e.toString())
                 }
                 .collectLatest {
-                    _uiState.value = UiState.Success(it)
+                    _uiState.value = UiState.Success(
+                        data = HeadLineState(
+                            articles = it,
+                            selectedCountry = selectedCountry
+                        )
+                    )
                 }
         }
     }

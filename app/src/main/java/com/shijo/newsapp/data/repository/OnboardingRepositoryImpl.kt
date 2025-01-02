@@ -14,13 +14,13 @@ class OnboardingRepositoryImpl @Inject constructor(
 ) : OnboardingRepository {
     override suspend fun saveOnboardingStatus() {
         dataStore.edit { settings ->
-            settings[PreferenceKeys.ONBOARDING_STATUS] = true
+            settings[PreferenceKeys.KEY_ONBOARDING_STATUS] = true
         }
     }
 
     override fun getOnboardingStatus(): Flow<Boolean> {
         return dataStore.data.map { preferences ->
-            preferences[PreferenceKeys.ONBOARDING_STATUS] ?: false
+            preferences[PreferenceKeys.KEY_ONBOARDING_STATUS] ?: false
         }
     }
 }

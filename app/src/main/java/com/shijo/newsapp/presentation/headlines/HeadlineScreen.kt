@@ -22,17 +22,15 @@ import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @Composable
-fun TopHeadlineScreen(uiState: UiState<List<Article>>) {
+fun HeadlineScreen(uiState: UiState<HeadLineState>) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
+            if (uiState is UiState.Success) {
                 HeadLineTopBar(
-                    country = Country(
-                        name = "USA",
-                        code = "us",
-                        flag = "🇺🇸"
-                    )
+                    country = uiState.data.selectedCountry
                 )
+            }
         }
     ) {
         val padding = it.calculateBottomPadding()
@@ -57,8 +55,8 @@ fun TopHeadlineScreen(uiState: UiState<List<Article>>) {
                     contentPadding = PaddingValues(Dimes.PaddingExtraSmall),
                     verticalArrangement = Arrangement.spacedBy(Dimes.PaddingExtraSmall)
                 ) {
-                    items(uiState.data.size) { index ->
-                        NewsItem(article = uiState.data[index])
+                    items(uiState.data.articles.size) { index ->
+                        NewsItem(article = uiState.data.articles[index])
                     }
                 }
             }
@@ -73,25 +71,34 @@ fun TopHeadlineScreen(uiState: UiState<List<Article>>) {
 @Composable
 fun PreviewNewsScreen() {
     NewsAppTheme {
-        TopHeadlineScreen(
-            uiState = UiState.Success(listOf(
-                Article(
-                    title = "Breaking News: Kotlin Rules",
-                    description = "Kotlin has become the most loved language for Android developers worldwide.",
-                    url = "https://example.com/kotlin",
-                    imageUrl = "https://example.com/kotlin_image.jpg",
-                    source = Source(name = "Tech News"),
-                    publishedAt = "2024-12-19"
-                ),
-                Article(
-                    title = "Compose UI Advances",
-                    description = "Jetpack Compose is transforming the way Android UI is built, enabling faster development.",
-                    url = "https://example.com/compose",
-                    imageUrl = "https://example.com/compose_image.jpg",
-                    source = Source(name = "Compose Weekly"),
-                    publishedAt = "2024-12-18"
+        HeadlineScreen(
+            uiState = UiState.Success(
+                HeadLineState(
+                    articles = listOf(
+                        Article(
+                            title = "Breaking News: Kotlin Rules",
+                            description = "Kotlin has become the most loved language for Android developers worldwide.",
+                            url = "https://example.com/kotlin",
+                            imageUrl = "https://example.com/kotlin_image.jpg",
+                            source = Source(name = "Tech News"),
+                            publishedAt = "2024-12-19"
+                        ),
+                        Article(
+                            title = "Compose UI Advances",
+                            description = "Jetpack Compose is transforming the way Android UI is built, enabling faster development.",
+                            url = "https://example.com/compose",
+                            imageUrl = "https://example.com/compose_image.jpg",
+                            source = Source(name = "Compose Weekly"),
+                            publishedAt = "2024-12-18"
+                        )
+                    ),
+                    selectedCountry = Country(
+                        name = "USA",
+                        code = "us",
+                        flag = "🇺🇸"
+                    )
                 )
-            ))
+            )
         )
     }
 }

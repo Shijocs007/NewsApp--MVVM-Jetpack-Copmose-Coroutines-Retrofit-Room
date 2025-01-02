@@ -19,9 +19,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.loc.newsapp.presentation.onboarding.components.OnBoardingPage
-import com.loc.newsapp.presentation.onboarding.components.PagerIndicator
 import com.shijo.newsapp.presentation.common.NewsButton
 import com.shijo.newsapp.presentation.common.NewsTextButton
+import com.shijo.newsapp.presentation.onboarding.components.PagerIndicator
 import com.shijo.newsapp.presentation.onboarding.components.pages
 import com.shijo.newsapp.ui.theme.Dimes
 import kotlinx.coroutines.flow.distinctUntilChanged

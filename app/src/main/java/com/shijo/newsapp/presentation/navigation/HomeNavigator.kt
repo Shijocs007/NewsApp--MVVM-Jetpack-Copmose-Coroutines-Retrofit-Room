@@ -1,6 +1,5 @@
 package com.shijo.newsapp.presentation.navigation
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -9,8 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.shijo.newsapp.presentation.common.ErrorScreen
-import com.shijo.newsapp.presentation.headlines.TopHeadlineScreen
-import com.shijo.newsapp.presentation.headlines.TopHeadlineViewModel
+import com.shijo.newsapp.presentation.headlines.HeadlineScreen
+import com.shijo.newsapp.presentation.headlines.HeadlineViewModel
 
 @Composable
 fun HomeNavGraph(
@@ -23,8 +22,8 @@ fun HomeNavGraph(
         modifier = modifier
     ) {
         composable<Route.TopHeadLineScreen> { backStackEntry ->
-            val viewModel: TopHeadlineViewModel = hiltViewModel()
-            TopHeadlineScreen(uiState = viewModel.uiState.collectAsState().value)
+            val viewModel: HeadlineViewModel = hiltViewModel()
+            HeadlineScreen(uiState = viewModel.uiState.collectAsState().value)
         }
         composable<Route.SearchScreen> { backStackEntry ->
             ErrorScreen(message = "Search screen will be implemented.")

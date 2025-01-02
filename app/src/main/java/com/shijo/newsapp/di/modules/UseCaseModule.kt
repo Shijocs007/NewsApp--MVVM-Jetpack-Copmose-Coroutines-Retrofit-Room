@@ -2,6 +2,7 @@ package com.shijo.newsapp.di.modules
 
 import com.shijo.newsapp.domain.repository.NewsRepository
 import com.shijo.newsapp.domain.repository.OnboardingRepository
+import com.shijo.newsapp.domain.usecases.country.GetSelectedCountry
 import com.shijo.newsapp.domain.usecases.news.GetTopHeadLines
 import com.shijo.newsapp.domain.usecases.onboarding.GetOnboardingStatus
 import com.shijo.newsapp.domain.usecases.onboarding.SaveOnboardingStatus
@@ -25,5 +26,9 @@ class UseCaseModule {
     @Provides
     fun provideGetTopHeadLinesUsecase(repository: NewsRepository) =
         GetTopHeadLines(repository)
+
+    @Provides
+    fun provideGetSelectedCountryUsecase(repository: NewsRepository) =
+        GetSelectedCountry(repository)
 
 }

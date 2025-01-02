@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.shijo.newsapp.data.models.Country
+import com.shijo.newsapp.data.models.defaultCountry
 import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
@@ -88,11 +89,7 @@ fun HeadLineTopBar(
 fun HomeTopBarPreview() {
     NewsAppTheme(dynamicColor = false) {
         HeadLineTopBar(
-            country = Country(
-                name = "USA",
-                code = "us",
-                flag = "🇺🇸"
-            )
+            country = defaultCountry
         )
     }
 }

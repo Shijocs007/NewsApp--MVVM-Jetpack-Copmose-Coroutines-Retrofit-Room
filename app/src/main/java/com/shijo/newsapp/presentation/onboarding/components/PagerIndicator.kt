@@ -1,4 +1,4 @@
-package com.loc.newsapp.presentation.onboarding.components
+package com.shijo.newsapp.presentation.onboarding.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

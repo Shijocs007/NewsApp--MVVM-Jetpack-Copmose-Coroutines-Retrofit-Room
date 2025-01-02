@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.network)
     implementation(libs.datastore)
+    implementation(libs.proto.datastore)
     implementation(libs.paging3)
     implementation(libs.paging3.compose)
     implementation(libs.room.runtime)
