@@ -9,7 +9,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.shijo.newsapp.presentation.navigation.HomeNavGraph
 import com.shijo.newsapp.presentation.home.components.HomeBottomNavigation
-import com.shijo.newsapp.presentation.home.components.HomeTopBar
 import com.shijo.newsapp.presentation.navigation.Route
 
 @Composable
@@ -18,39 +17,39 @@ fun HomeScreen(
     onEvent: (HomeEvent) -> Unit
 ) {
     val navController = rememberNavController()
-    Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-        if (state.isBottomBarEnabled) {
-            HomeBottomNavigation(
-                items = state.bottomNavItems,
-                selectedItem = state.selectedItemIndex,
-                onItemClick = { index ->
-                    when (index) {
-                        0 -> navigateToTab(
-                            navController = navController,
-                            route = Route.TopHeadLineScreen
-                        )
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            if (state.isBottomBarEnabled) {
+                HomeBottomNavigation(
+                    items = state.bottomNavItems,
+                    selectedItem = state.selectedItemIndex,
+                    onItemClick = { index ->
+                        when (index) {
+                            0 -> navigateToTab(
+                                navController = navController,
+                                route = Route.TopHeadLineScreen
+                            )
 
-                        1 -> navigateToTab(
-                            navController = navController,
-                            route = Route.SearchScreen
-                        )
+                            1 -> navigateToTab(
+                                navController = navController,
+                                route = Route.SearchScreen
+                            )
 
-                        2 -> navigateToTab(
-                            navController = navController,
-                            route = Route.BookmarkScreen
-                        )
+                            2 -> navigateToTab(
+                                navController = navController,
+                                route = Route.BookmarkScreen
+                            )
+                        }
+                        onEvent(HomeEvent.OnBottomNavClick(index = index))
                     }
-                    onEvent(HomeEvent.OnBottomNavClick(index = index))
-                }
-            )
-        }
-    },
-        topBar = {
-            HomeTopBar(country = state.selectedCountry)
-        }) {
+                )
+            }
+        },
+    ) {
         val padding = it.calculateBottomPadding()
         HomeNavGraph(
-            modifier = Modifier.padding(bottom = padding, top = padding),
+            modifier = Modifier.padding(bottom = padding),
             navController = navController
         )
     }

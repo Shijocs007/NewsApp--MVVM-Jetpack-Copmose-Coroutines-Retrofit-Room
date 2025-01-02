@@ -6,41 +6,60 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.shijo.newsapp.data.models.Article
+import com.shijo.newsapp.data.models.Country
 import com.shijo.newsapp.data.models.Source
 import com.shijo.newsapp.presentation.common.ErrorScreen
 import com.shijo.newsapp.presentation.common.NewsItem
-import com.shijo.newsapp.presentation.common.NewsItemShimmer
 import com.shijo.newsapp.presentation.common.NewsListShimmer
 import com.shijo.newsapp.presentation.common.UiState
-import com.shijo.newsapp.ui.theme.Dimes
+import com.shijo.newsapp.presentation.headlines.components.HeadLineTopBar
 import com.shijo.newsapp.ui.theme.Dimes.ExtraSmallPadding2
-import com.shijo.newsapp.ui.theme.Dimes.MediumPadding3
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @Composable
 fun TopHeadlineScreen(uiState: UiState<List<Article>>) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+                HeadLineTopBar(
+                    country = Country(
+                        name = "USA",
+                        code = "us",
+                        flag = "🇺🇸"
+                    )
+                )
+        }
+    ) {
+        val padding = it.calculateBottomPadding()
+        when (uiState) {
+            is UiState.Error -> {
+                ErrorScreen(message = uiState.message)
+            }
 
-    when (uiState) {
-        is UiState.Error -> {
-            ErrorScreen(message = uiState.message)
-        }
-        UiState.Loading -> {
-            NewsListShimmer()
-        }
-        is UiState.Success -> {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(ExtraSmallPadding2),
-                contentPadding = PaddingValues(ExtraSmallPadding2),
-                verticalArrangement = Arrangement.spacedBy(ExtraSmallPadding2)
-            ) {
-                items(uiState.data.size) { index ->
-                    NewsItem(article = uiState.data[index])
+            UiState.Loading -> {
+                NewsListShimmer()
+            }
+
+            is UiState.Success -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .padding(
+                            top = padding,
+                            start = ExtraSmallPadding2,
+                            end = ExtraSmallPadding2,
+                            bottom = ExtraSmallPadding2
+                        ),
+                    contentPadding = PaddingValues(ExtraSmallPadding2),
+                    verticalArrangement = Arrangement.spacedBy(ExtraSmallPadding2)
+                ) {
+                    items(uiState.data.size) { index ->
+                        NewsItem(article = uiState.data[index])
+                    }
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.shijo.newsapp.presentation.home.components
+package com.shijo.newsapp.presentation.headlines.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.clickable
@@ -29,7 +29,7 @@ import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeTopBar(
+fun HeadLineTopBar(
     country: Country,
     onCountryClick: () -> Unit = {}
 ) {
@@ -88,7 +88,7 @@ fun HomeTopBar(
 @Composable
 fun HomeTopBarPreview() {
     NewsAppTheme(dynamicColor = false) {
-        HomeTopBar(
+        HeadLineTopBar(
             country = Country(
                 name = "USA",
                 code = "us",
