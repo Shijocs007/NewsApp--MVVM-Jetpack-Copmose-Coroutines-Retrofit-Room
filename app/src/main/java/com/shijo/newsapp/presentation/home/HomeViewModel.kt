@@ -16,7 +16,6 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
     private val _state = MutableStateFlow(HomeState(
-        isBottomBarEnabled = true,
         selectedItemIndex = 0,
         bottomNavItems = bottomNavigationItems,
         selectedCountry = Country(

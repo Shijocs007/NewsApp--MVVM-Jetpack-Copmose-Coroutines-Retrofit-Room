@@ -22,13 +22,19 @@ import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @Composable
-fun HeadlineScreen(uiState: UiState<HeadLineState>) {
+fun HeadlineScreen(
+    uiState: UiState<HeadLineState>,
+    onCountryClicked: () -> Unit = {}
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             if (uiState is UiState.Success) {
                 HeadLineTopBar(
-                    country = uiState.data.selectedCountry
+                    country = uiState.data.selectedCountry,
+                    onCountryClicked = {
+                        onCountryClicked()
+                    }
                 )
             }
         }

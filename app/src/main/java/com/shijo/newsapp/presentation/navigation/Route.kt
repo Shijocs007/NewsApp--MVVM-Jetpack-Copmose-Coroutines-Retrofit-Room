@@ -11,12 +11,15 @@ sealed class Route {
     data object HomeScreen : Route()
 
     @Serializable
-    data object TopHeadLineScreen : Route()
+    data object HeadLineScreen : Route()
 
     @Serializable
     data object SearchScreen : Route()
 
     @Serializable
     data object BookmarkScreen : Route()
+
+    @Serializable
+    data object CountryListScreen : Route()
 
 }

@@ -31,7 +31,7 @@ import com.shijo.newsapp.ui.theme.NewsAppTheme
 @Composable
 fun HeadLineTopBar(
     country: Country,
-    onCountryClick: () -> Unit = {}
+    onCountryClicked: () -> Unit = {}
 ) {
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
@@ -52,7 +52,7 @@ fun HeadLineTopBar(
         actions = {
             Row(
                 modifier = Modifier
-                    .clickable { onCountryClick() }
+                    .clickable { onCountryClicked() }
                     .padding(horizontal = Dimes.PaddingMedium),
                 verticalAlignment = Alignment.CenterVertically
             ) {

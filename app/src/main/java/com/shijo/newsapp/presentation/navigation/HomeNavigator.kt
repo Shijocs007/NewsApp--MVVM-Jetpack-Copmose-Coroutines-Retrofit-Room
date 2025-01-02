@@ -8,6 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.shijo.newsapp.presentation.common.ErrorScreen
+import com.shijo.newsapp.presentation.country.CountryListScreen
+import com.shijo.newsapp.presentation.country.CountryListViewModel
 import com.shijo.newsapp.presentation.headlines.HeadlineScreen
 import com.shijo.newsapp.presentation.headlines.HeadlineViewModel
 
@@ -18,18 +20,27 @@ fun HomeNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.TopHeadLineScreen,
+        startDestination = Route.HeadLineScreen,
         modifier = modifier
     ) {
-        composable<Route.TopHeadLineScreen> { backStackEntry ->
+        composable<Route.HeadLineScreen> { backStackEntry ->
             val viewModel: HeadlineViewModel = hiltViewModel()
-            HeadlineScreen(uiState = viewModel.uiState.collectAsState().value)
+            HeadlineScreen(
+                uiState = viewModel.uiState.collectAsState().value,
+                onCountryClicked = {
+                    navController.navigate(Route.CountryListScreen)
+                }
+            )
         }
         composable<Route.SearchScreen> { backStackEntry ->
             ErrorScreen(message = "Search screen will be implemented.")
         }
         composable<Route.BookmarkScreen> { backStackEntry ->
             ErrorScreen(message = "Bookmark screen will be implemented")
+        }
+        composable<Route.CountryListScreen> { backStackEntry ->
+            val viewModel : CountryListViewModel = hiltViewModel()
+            CountryListScreen(uiState = viewModel.uiState.collectAsState().value)
         }
     }
 }

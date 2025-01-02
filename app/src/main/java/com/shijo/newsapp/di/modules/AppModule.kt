@@ -1,15 +1,19 @@
 package com.shijo.newsapp.di.modules
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
+import com.google.gson.Gson
 import com.shijo.newsapp.data.api.NewsApiService
 import com.shijo.newsapp.data.room.NewsDao
 import com.shijo.newsapp.data.room.NewsDatabase
 import com.shijo.newsapp.di.BaseUrl
+import com.shijo.newsapp.utils.AssetReader
 import com.shijo.newsapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -58,4 +62,12 @@ class AppModule {
     fun provideNewsDao(
         newsDatabase: NewsDatabase
     ): NewsDao = newsDatabase.newsDao
+
+    @Provides
+    @Singleton
+    fun provideAssetReader(@ApplicationContext context: Context): AssetReader = AssetReader(context)
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson = Gson()
 }

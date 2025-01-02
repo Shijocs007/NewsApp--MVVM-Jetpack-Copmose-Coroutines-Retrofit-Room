@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.shijo.newsapp.presentation.navigation.HomeNavGraph
 import com.shijo.newsapp.presentation.home.components.HomeBottomNavigation
@@ -17,10 +19,15 @@ fun HomeScreen(
     onEvent: (HomeEvent) -> Unit
 ) {
     val navController = rememberNavController()
+    val currentDestination = navController.currentBackStackEntryAsState().value?.destination
+    val isBottomBarEnabled = (currentDestination?.hasRoute<Route.HeadLineScreen>() == true
+            || currentDestination?.hasRoute<Route.SearchScreen>() == true
+            || currentDestination?.hasRoute<Route.BookmarkScreen>() == true)
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            if (state.isBottomBarEnabled) {
+            if (isBottomBarEnabled) {
                 HomeBottomNavigation(
                     items = state.bottomNavItems,
                     selectedItem = state.selectedItemIndex,
@@ -28,7 +35,7 @@ fun HomeScreen(
                         when (index) {
                             0 -> navigateToTab(
                                 navController = navController,
-                                route = Route.TopHeadLineScreen
+                                route = Route.HeadLineScreen
                             )
 
                             1 -> navigateToTab(
@@ -47,9 +54,9 @@ fun HomeScreen(
             }
         },
     ) {
-        val padding = it.calculateBottomPadding()
+        val paddingBottom = it.calculateBottomPadding()
         HomeNavGraph(
-            modifier = Modifier.padding(bottom = padding),
+            modifier = Modifier.padding(bottom = paddingBottom),
             navController = navController
         )
     }

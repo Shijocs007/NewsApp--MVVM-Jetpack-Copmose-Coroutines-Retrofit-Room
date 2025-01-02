@@ -79,6 +79,7 @@ dependencies {
     implementation(libs.paging3)
     implementation(libs.paging3.compose)
     implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
     annotationProcessor(libs.room.compiler)
     ksp(libs.kapt.room.compiler)
     implementation(libs.room.paging)

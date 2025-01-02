@@ -5,7 +5,6 @@ import com.shijo.newsapp.utils.BottomNavigationItem
 
 
 data class HomeState(
-    val isBottomBarEnabled: Boolean = true,
     val selectedItemIndex: Int = 0,
     val bottomNavItems : List<BottomNavigationItem>,
     val selectedCountry : Country

@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 data class Country(
     val name: String,
     @PrimaryKey val code: String,
-    val flag: String
+    val flag: String,
+    val isSelected : Boolean = false
 )
 
 val defaultCountry = Country(

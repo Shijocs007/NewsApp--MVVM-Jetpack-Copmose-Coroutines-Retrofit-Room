@@ -52,6 +52,7 @@ paging3 = { group = "androidx.paging", name = "paging-runtime", version.ref = "p
 paging3-compose = {group = "androidx.paging", name = "paging-compose", version.ref = "paging3"}
 room-runtime = {group = "androidx.room", name = "room-runtime", version.ref = "room_version"}
 room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "room_version"}
+room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "room_version"}
 kapt-room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "room_version"}
 room-paging = {group = "androidx.room", name = "room-paging", version.ref = "room_version"}
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
