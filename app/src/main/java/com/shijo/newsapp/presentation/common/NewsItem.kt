@@ -27,6 +27,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import com.shijo.newsapp.data.models.Article
 import com.shijo.newsapp.data.models.Source
+import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @Composable
@@ -35,22 +36,22 @@ fun NewsItem(article: Article) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable { /* Handle click here, e.g., navigate to details */ },
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+        shape = RoundedCornerShape(Dimes.ElevationLarge),
+        elevation = CardDefaults.cardElevation(Dimes.ElevationMedium)
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(Dimes.PaddingMedium)) {
 
             AsyncImage(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp)
+                    .height(Dimes.ArticleImageHeight)
                     .clip(MaterialTheme.shapes.medium),
                 model = ImageRequest.Builder(LocalContext.current).data(article.imageUrl).build(),
                 contentDescription = null,
                 contentScale = ContentScale.Crop
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
             Text(
                 text = article.title ?:"",
                 style = MaterialTheme.typography.titleMedium,
@@ -58,14 +59,14 @@ fun NewsItem(article: Article) {
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
             Text(
                 text = article.description?:"",
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()

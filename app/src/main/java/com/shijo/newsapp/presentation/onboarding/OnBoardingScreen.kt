@@ -23,7 +23,7 @@ import com.loc.newsapp.presentation.onboarding.components.PagerIndicator
 import com.shijo.newsapp.presentation.common.NewsButton
 import com.shijo.newsapp.presentation.common.NewsTextButton
 import com.shijo.newsapp.presentation.onboarding.components.pages
-import com.shijo.newsapp.ui.theme.Dimes.MediumPadding2
+import com.shijo.newsapp.ui.theme.Dimes
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
@@ -52,7 +52,7 @@ fun OnBoardingScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = MediumPadding2)
+                .padding(horizontal = Dimes.PaddingMedium)
                 .navigationBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically

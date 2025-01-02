@@ -22,9 +22,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.shijo.newsapp.data.models.Country
+import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,7 +44,7 @@ fun HeadLineTopBar(
                     fontStyle = FontStyle.Italic,
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Serif, // Makes it look more stylish
-                    fontSize = 24.sp // Adjust the size as needed
+                    fontSize = Dimes.TextLarge // Adjust the size as needed
                 )
             )
         },
@@ -53,16 +52,16 @@ fun HeadLineTopBar(
             Row(
                 modifier = Modifier
                     .clickable { onCountryClick() }
-                    .padding(horizontal = 8.dp),
+                    .padding(horizontal = Dimes.PaddingMedium),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 // Flag
                 Text(
                     text = country.flag,
-                    fontSize = 24.sp
+                    fontSize = Dimes.TextLarge
                 )
 
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.width(Dimes.SpacerSmall))
 
                 Text(
                     text = country.code.uppercase(),
@@ -70,7 +69,7 @@ fun HeadLineTopBar(
                     color = MaterialTheme.colorScheme.onPrimary
                 )
 
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.width(Dimes.SpacerExtraSmall))
 
                 // Right arrow
                 Icon(

@@ -19,8 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.wear.compose.material.ContentAlpha
 import com.shijo.newsapp.R
 import com.shijo.newsapp.presentation.onboarding.components.Page
-import com.shijo.newsapp.ui.theme.Dimes.MediumPadding1
-import com.shijo.newsapp.ui.theme.Dimes.MediumPadding2
+import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @Composable
@@ -37,15 +36,15 @@ fun OnBoardingPage(
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
-        Spacer(modifier = Modifier.height(MediumPadding1))
+        Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
         Text(
-            modifier = Modifier.padding(horizontal = MediumPadding2),
+            modifier = Modifier.padding(horizontal = Dimes.PaddingMedium),
             text = page.title,
             style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.onSurface
         )
         Text(
-            modifier = Modifier.padding(horizontal = MediumPadding2),
+            modifier = Modifier.padding(horizontal = Dimes.PaddingMedium),
             text = page.description,
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.medium)

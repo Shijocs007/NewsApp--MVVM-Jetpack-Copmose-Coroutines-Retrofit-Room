@@ -12,8 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @Composable
@@ -28,11 +27,11 @@ fun ErrorScreen(message: String) {
             text = message,
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontWeight = FontWeight.Bold,
-                fontSize = 20.sp
+                fontSize = Dimes.TextLarge
             ),
             color = MaterialTheme.colorScheme.error,
             modifier = Modifier
-                .padding(16.dp)
+                .padding(Dimes.PaddingMedium)
                 .align(Alignment.Center)
         )
     }

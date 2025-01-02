@@ -18,7 +18,7 @@ import com.shijo.newsapp.presentation.common.NewsItem
 import com.shijo.newsapp.presentation.common.NewsListShimmer
 import com.shijo.newsapp.presentation.common.UiState
 import com.shijo.newsapp.presentation.headlines.components.HeadLineTopBar
-import com.shijo.newsapp.ui.theme.Dimes.ExtraSmallPadding2
+import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @Composable
@@ -50,12 +50,12 @@ fun TopHeadlineScreen(uiState: UiState<List<Article>>) {
                     modifier = Modifier
                         .padding(
                             top = padding,
-                            start = ExtraSmallPadding2,
-                            end = ExtraSmallPadding2,
-                            bottom = ExtraSmallPadding2
+                            start = Dimes.PaddingExtraSmall,
+                            end = Dimes.PaddingExtraSmall,
+                            bottom = Dimes.PaddingExtraSmall
                         ),
-                    contentPadding = PaddingValues(ExtraSmallPadding2),
-                    verticalArrangement = Arrangement.spacedBy(ExtraSmallPadding2)
+                    contentPadding = PaddingValues(Dimes.PaddingExtraSmall),
+                    verticalArrangement = Arrangement.spacedBy(Dimes.PaddingExtraSmall)
                 ) {
                     items(uiState.data.size) { index ->
                         NewsItem(article = uiState.data[index])

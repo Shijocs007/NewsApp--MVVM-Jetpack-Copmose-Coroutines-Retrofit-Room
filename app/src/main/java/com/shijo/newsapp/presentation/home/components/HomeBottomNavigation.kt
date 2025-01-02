@@ -14,7 +14,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 import com.shijo.newsapp.utils.BottomNavigationItem
 
@@ -28,7 +28,7 @@ fun HomeBottomNavigation(
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.primary,
-        tonalElevation = 10.dp
+        tonalElevation = Dimes.ElevationLarge
     ) {
         items.forEachIndexed { index, item ->
             NavigationBarItem(

@@ -6,9 +6,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
+import com.shijo.newsapp.ui.theme.Dimes
 
 @Composable
 fun NewsButton(
@@ -22,7 +21,7 @@ fun NewsButton(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary
         ),
-        shape = RoundedCornerShape(size = 6.dp)
+        shape = RoundedCornerShape(size = Dimes.ElevationLarge)
     ) {
         Text(
             text = text,

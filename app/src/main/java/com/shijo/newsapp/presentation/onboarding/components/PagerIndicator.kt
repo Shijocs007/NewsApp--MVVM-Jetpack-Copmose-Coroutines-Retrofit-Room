@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.wear.compose.material.ContentAlpha
-import com.shijo.newsapp.ui.theme.Dimes.IndicatorSize
+import com.shijo.newsapp.ui.theme.Dimes
 
 @Composable
 fun PagerIndicator(
@@ -26,7 +26,7 @@ fun PagerIndicator(
         repeat(times = pagesSize) { page ->
             Box(
                 modifier = Modifier
-                    .size(IndicatorSize)
+                    .size(Dimes.PageIndicatorSize)
                     .clip(CircleShape)
                     .background(color = if (page == selectedPage) selectedColor else unselectedColor)
             )

@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.shijo.newsapp.ui.theme.Dimes
 
 
 @Composable
@@ -69,15 +70,15 @@ fun ShimmerEffect(modifier: Modifier = Modifier) {
 
 @Composable
 fun NewsListShimmer(modifier: Modifier = Modifier) {
-    Column(modifier = Modifier.padding(8.dp)) {
+    Column(modifier = Modifier.padding(Dimes.PaddingSmall)) {
         NewsItemShimmer()
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
         NewsItemShimmer()
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
         NewsItemShimmer()
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
         NewsItemShimmer()
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
     }
 }
 
@@ -86,32 +87,32 @@ fun NewsItemShimmer() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
-        shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+            .padding(Dimes.PaddingMedium),
+        shape = RoundedCornerShape(Dimes.ElevationLarge),
+        elevation = CardDefaults.cardElevation(Dimes.ElevationMedium)
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(Dimes.PaddingMedium)) {
             // Shimmer Effect for Image
             ShimmerEffect(modifier = Modifier
-                .height(200.dp)
+                .height(Dimes.ArticleImageHeight)
                 .fillMaxWidth()
                 .clip(MaterialTheme.shapes.medium))
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
 
             // Shimmer Effect for Text (Title)
             ShimmerEffect(modifier = Modifier
                 .fillMaxWidth()
-                .height(20.dp))
+                .height(Dimes.PaddingMedium))
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(Dimes.SpacerExtraSmall))
 
             // Shimmer Effect for Text (Description)
             ShimmerEffect(modifier = Modifier
                 .fillMaxWidth()
-                .height(16.dp))
+                .height(Dimes.PaddingMedium))
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(Dimes.SpacerSmall))
 
             // Shimmer Effect for Row with Text
             Row(
