@@ -32,7 +32,9 @@ import com.shijo.newsapp.ui.theme.NewsAppTheme
 @Composable
 fun CountryListScreen(
     modifier: Modifier = Modifier,
-    uiState: UiState<List<Country>>
+    uiState: UiState<List<Country>>,
+    onBackPressed : () -> Unit = {},
+    onEvent : (CountryListEvent) -> Unit = {}
     ) {
     Scaffold(
         topBar = {
@@ -43,7 +45,7 @@ fun CountryListScreen(
                 ),
                 title = { Text(stringResource(R.string.country_list)) },
                 navigationIcon = {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { onBackPressed()}) {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = stringResource(R.string.back)
@@ -72,7 +74,13 @@ fun CountryListScreen(
                         )
                 ) {
                     items(uiState.data.size) { index ->
-                        CountryItem(country = uiState.data[index])
+                        CountryItem(
+                            country = uiState.data[index],
+                            onCountrySelected = { country->
+                                onEvent(CountryListEvent.OnCountrySelected(country = country))
+                                onBackPressed()
+                            }
+                        )
                     }
                 }
             }

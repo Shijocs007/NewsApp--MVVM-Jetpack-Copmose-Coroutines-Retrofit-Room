@@ -18,4 +18,10 @@ interface NewsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCountries(countries: List<Country>)
+
+    @Query("UPDATE Country SET isSelected = :isSelected WHERE code = :countryCode")
+    suspend fun updateCountrySelectionStatus(countryCode: String, isSelected: Boolean)
+
+    @Query("SELECT * FROM Country WHERE isSelected = 1 LIMIT 1")
+    suspend fun getSelectedCountry(): Country?
 }

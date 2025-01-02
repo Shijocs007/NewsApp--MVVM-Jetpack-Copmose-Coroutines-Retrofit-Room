@@ -14,5 +14,6 @@ data class Country(
 val defaultCountry = Country(
     name = "USA",
     code = "us",
-    flag = "🇺🇸"
+    flag = "🇺🇸",
+    isSelected = true
 )

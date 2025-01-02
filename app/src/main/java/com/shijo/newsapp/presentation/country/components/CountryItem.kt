@@ -1,6 +1,7 @@
 package com.shijo.newsapp.presentation.country.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,12 +31,17 @@ import com.shijo.newsapp.ui.theme.NewsAppTheme
 @Composable
 fun CountryItem(
     modifier: Modifier = Modifier,
-    country: Country) {
+    country: Country,
+    onCountrySelected : (Country) -> Unit = {}
+) {
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = Dimes.PaddingSmall),
+            .padding(vertical = Dimes.PaddingSmall)
+            .clickable {
+                onCountrySelected(country)
+            },
         elevation = CardDefaults.cardElevation(Dimes.ElevationMedium),
         shape = MaterialTheme.shapes.medium
     ) {

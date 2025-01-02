@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.shijo.newsapp.data.models.Article
@@ -20,12 +22,18 @@ import com.shijo.newsapp.presentation.common.UiState
 import com.shijo.newsapp.presentation.headlines.components.HeadLineTopBar
 import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
+import kotlinx.coroutines.launch
 
 @Composable
 fun HeadlineScreen(
     uiState: UiState<HeadLineState>,
-    onCountryClicked: () -> Unit = {}
+    onCountryClicked: () -> Unit = {},
+    isRefreshScreen : Boolean,
+    onEvent : (HeadLineScreenEvent) -> Unit = {}
 ) {
+   LaunchedEffect(isRefreshScreen) {
+        onEvent(HeadLineScreenEvent.RefreshScreen)
+   }
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -78,6 +86,7 @@ fun HeadlineScreen(
 fun PreviewNewsScreen() {
     NewsAppTheme {
         HeadlineScreen(
+            isRefreshScreen = false,
             uiState = UiState.Success(
                 HeadLineState(
                     articles = listOf(

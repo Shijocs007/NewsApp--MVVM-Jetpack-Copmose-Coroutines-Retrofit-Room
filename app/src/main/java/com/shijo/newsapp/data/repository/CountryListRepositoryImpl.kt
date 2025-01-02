@@ -23,6 +23,10 @@ class CountryListRepositoryImpl @Inject constructor(
         return newsDao.getAllCountries()
     }
 
+    override suspend fun updateCountrySelectionStatus(countryCode : String, status: Boolean) {
+        newsDao.updateCountrySelectionStatus(countryCode = countryCode, isSelected = status)
+    }
+
     private fun parseCountryList(countryString: String) : List<Country> {
         try {
             val type = object : TypeToken<List<Country>>() {}.type

@@ -23,14 +23,21 @@ class HeadlineViewModel @Inject constructor(
 
     val uiState: StateFlow<UiState<HeadLineState>> = _uiState
 
-    init {
-        fetchTopHeadLines()
+
+    fun onEvent(event: HeadLineScreenEvent) {
+        when(event){
+            HeadLineScreenEvent.RefreshScreen -> {
+                _uiState.value = UiState.Loading
+                fetchTopHeadLines()
+            }
+        }
     }
 
     private fun fetchTopHeadLines() {
         viewModelScope.launch {
+
             val selectedCountry = getSelectedCountry()
-            getTopHeadLines(selectedCountry.code)
+            getTopHeadLines(selectedCountry.code.lowercase())
                 .catch { e ->
                     _uiState.value = UiState.Error(e.toString())
                 }

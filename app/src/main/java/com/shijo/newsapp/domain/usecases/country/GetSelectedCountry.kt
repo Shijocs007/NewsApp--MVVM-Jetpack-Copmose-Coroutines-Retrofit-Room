@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetSelectedCountry (private val newsRepository: NewsRepository) {
-    operator fun invoke() : Country {
+    suspend operator fun invoke() : Country {
         return newsRepository.getSelectedCountry()
     }
 }

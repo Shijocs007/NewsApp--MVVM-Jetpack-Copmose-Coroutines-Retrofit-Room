@@ -8,5 +8,5 @@ interface NewsRepository {
 
     fun getTopHeadlines(country: String): Flow<List<Article>>
 
-    fun getSelectedCountry() : Country
+    suspend fun getSelectedCountry() : Country
 }

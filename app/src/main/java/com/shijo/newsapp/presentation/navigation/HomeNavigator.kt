@@ -12,6 +12,7 @@ import com.shijo.newsapp.presentation.country.CountryListScreen
 import com.shijo.newsapp.presentation.country.CountryListViewModel
 import com.shijo.newsapp.presentation.headlines.HeadlineScreen
 import com.shijo.newsapp.presentation.headlines.HeadlineViewModel
+import com.shijo.newsapp.utils.Constants
 
 @Composable
 fun HomeNavGraph(
@@ -23,24 +24,40 @@ fun HomeNavGraph(
         startDestination = Route.HeadLineScreen,
         modifier = modifier
     ) {
-        composable<Route.HeadLineScreen> { backStackEntry ->
+        composable<Route.HeadLineScreen> { entry ->
+            val isRefreshScreen = entry.savedStateHandle.get<Boolean>(Constants.REFRESH_SCREEN)
             val viewModel: HeadlineViewModel = hiltViewModel()
             HeadlineScreen(
                 uiState = viewModel.uiState.collectAsState().value,
                 onCountryClicked = {
                     navController.navigate(Route.CountryListScreen)
-                }
+                },
+                onEvent = { event ->
+                    viewModel.onEvent(event = event)
+                },
+                isRefreshScreen = isRefreshScreen ?: false
             )
         }
-        composable<Route.SearchScreen> { backStackEntry ->
+        composable<Route.SearchScreen> {
             ErrorScreen(message = "Search screen will be implemented.")
         }
-        composable<Route.BookmarkScreen> { backStackEntry ->
+        composable<Route.BookmarkScreen> {
             ErrorScreen(message = "Bookmark screen will be implemented")
         }
-        composable<Route.CountryListScreen> { backStackEntry ->
-            val viewModel : CountryListViewModel = hiltViewModel()
-            CountryListScreen(uiState = viewModel.uiState.collectAsState().value)
+        composable<Route.CountryListScreen> {
+            val viewModel: CountryListViewModel = hiltViewModel()
+            CountryListScreen(
+                uiState = viewModel.uiState.collectAsState().value,
+                onBackPressed = {
+                    navController.previousBackStackEntry
+                        ?.savedStateHandle
+                        ?.set(Constants.REFRESH_SCREEN, true)
+                    navController.popBackStack()
+                },
+                onEvent = { event ->
+                    viewModel.onEvent(event = event)
+                }
+            )
         }
     }
 }

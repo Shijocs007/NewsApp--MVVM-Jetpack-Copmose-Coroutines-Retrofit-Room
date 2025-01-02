@@ -7,6 +7,7 @@ import com.shijo.newsapp.data.datastore.PreferenceKeys
 import com.shijo.newsapp.data.models.Article
 import com.shijo.newsapp.data.models.Country
 import com.shijo.newsapp.data.models.defaultCountry
+import com.shijo.newsapp.data.room.NewsDao
 import com.shijo.newsapp.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,7 +15,8 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
-    private val newsApiService: NewsApiService
+    private val newsApiService: NewsApiService,
+    private val newsDao: NewsDao
 ) : NewsRepository {
 
     override fun getTopHeadlines(country: String): Flow<List<Article>> {
@@ -29,7 +31,7 @@ class NewsRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getSelectedCountry(): Country {
-        return defaultCountry
+    override suspend fun getSelectedCountry(): Country {
+        return newsDao.getSelectedCountry() ?:defaultCountry
     }
 }
