@@ -1,6 +1,10 @@
 package com.shijo.newsapp.di.modules
 
+import android.app.Application
+import androidx.room.Room
 import com.shijo.newsapp.data.api.NewsApiService
+import com.shijo.newsapp.data.room.NewsDao
+import com.shijo.newsapp.data.room.NewsDatabase
 import com.shijo.newsapp.di.BaseUrl
 import com.shijo.newsapp.utils.Constants
 import dagger.Module
@@ -35,4 +39,23 @@ class AppModule {
             .build()
             .create(NewsApiService::class.java)
     }
+
+
+    @Provides
+    @Singleton
+    fun provideNewsDatabase(
+        application: Application
+    ): NewsDatabase {
+        return Room.databaseBuilder(
+            context = application,
+            klass = NewsDatabase::class.java,
+            name = "db_news"
+        ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewsDao(
+        newsDatabase: NewsDatabase
+    ): NewsDao = newsDatabase.newsDao
 }
