@@ -32,7 +32,9 @@ fun HeadlineScreen(
     onEvent : (HeadLineScreenEvent) -> Unit = {}
 ) {
    LaunchedEffect(isRefreshScreen) {
-        onEvent(HeadLineScreenEvent.RefreshScreen)
+       if (isRefreshScreen) {
+           onEvent(HeadLineScreenEvent.RefreshScreen)
+       }
    }
     Scaffold(
         modifier = Modifier.fillMaxSize(),

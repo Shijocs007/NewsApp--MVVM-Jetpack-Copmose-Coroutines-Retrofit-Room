@@ -23,6 +23,9 @@ class HeadlineViewModel @Inject constructor(
 
     val uiState: StateFlow<UiState<HeadLineState>> = _uiState
 
+    init {
+        fetchTopHeadLines()
+    }
 
     fun onEvent(event: HeadLineScreenEvent) {
         when(event){
