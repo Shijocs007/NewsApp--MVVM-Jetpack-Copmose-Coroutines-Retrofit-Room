@@ -3,7 +3,6 @@ package com.shijo.newsapp.data.repository
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import com.shijo.newsapp.data.api.NewsApiService
-import com.shijo.newsapp.data.datastore.PreferenceKeys
 import com.shijo.newsapp.data.models.Article
 import com.shijo.newsapp.data.models.Country
 import com.shijo.newsapp.data.models.defaultCountry
@@ -22,7 +21,7 @@ class NewsRepositoryImpl @Inject constructor(
     override fun getTopHeadlines(country: String): Flow<List<Article>> {
         return flow {
             emit(newsApiService.getTopHeadlines(country))
-        }.map { it ->
+        }.map {
             it.articles.filter {article->
                 !article.title.isNullOrEmpty()
                         && !article.description.isNullOrEmpty()

@@ -36,7 +36,7 @@ fun CountryItem(
 ) {
 
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(vertical = Dimes.PaddingSmall)
             .clickable {

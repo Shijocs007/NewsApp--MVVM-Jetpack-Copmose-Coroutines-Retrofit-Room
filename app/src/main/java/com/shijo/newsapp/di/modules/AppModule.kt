@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import com.shijo.newsapp.data.api.NewsApiService
 import com.shijo.newsapp.data.room.NewsDao
 import com.shijo.newsapp.data.room.NewsDatabase
+import com.shijo.newsapp.data.room.NewsTypeConvertor
 import com.shijo.newsapp.di.BaseUrl
 import com.shijo.newsapp.utils.AssetReader
 import com.shijo.newsapp.utils.Constants
@@ -54,7 +55,7 @@ class AppModule {
             context = application,
             klass = NewsDatabase::class.java,
             name = "db_news"
-        ).build()
+        ).addTypeConverter(NewsTypeConvertor()).build()
     }
 
     @Provides

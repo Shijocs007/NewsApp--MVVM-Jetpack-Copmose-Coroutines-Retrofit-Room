@@ -29,7 +29,8 @@ fun HeadlineScreen(
     uiState: UiState<HeadLineState>,
     onCountryClicked: () -> Unit = {},
     isRefreshScreen : Boolean,
-    onEvent : (HeadLineScreenEvent) -> Unit = {}
+    onEvent : (HeadLineScreenEvent) -> Unit = {},
+    navigateToDetails: (Article) -> Unit
 ) {
    LaunchedEffect(isRefreshScreen) {
        if (isRefreshScreen) {
@@ -72,7 +73,12 @@ fun HeadlineScreen(
                     verticalArrangement = Arrangement.spacedBy(Dimes.PaddingExtraSmall)
                 ) {
                     items(uiState.data.articles.size) { index ->
-                        NewsItem(article = uiState.data.articles[index])
+                        NewsItem(
+                            article = uiState.data.articles[index],
+                            onArticleClicked = { article ->
+                                navigateToDetails(article)
+                            }
+                            )
                     }
                 }
             }
@@ -88,6 +94,7 @@ fun HeadlineScreen(
 fun PreviewNewsScreen() {
     NewsAppTheme {
         HeadlineScreen(
+            navigateToDetails = {},
             isRefreshScreen = false,
             uiState = UiState.Success(
                 HeadLineState(

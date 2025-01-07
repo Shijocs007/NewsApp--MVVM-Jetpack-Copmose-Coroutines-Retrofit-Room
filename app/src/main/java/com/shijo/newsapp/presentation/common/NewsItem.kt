@@ -31,11 +31,15 @@ import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme
 
 @Composable
-fun NewsItem(article: Article) {
+fun NewsItem(
+    article: Article,
+    onArticleClicked: (Article) -> Unit = {},) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { /* Handle click here, e.g., navigate to details */ },
+            .clickable {
+                onArticleClicked(article)
+            },
         shape = RoundedCornerShape(Dimes.ElevationLarge),
         elevation = CardDefaults.cardElevation(Dimes.ElevationMedium)
     ) {
