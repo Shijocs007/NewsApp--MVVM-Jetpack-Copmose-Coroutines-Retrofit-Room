@@ -48,12 +48,11 @@ fun HeadlineScreen(
             }
         }
     ) {
-        val padding = it.calculateBottomPadding()
+        val padding = it.calculateTopPadding()
         when (uiState) {
             is UiState.Error -> {
                 ErrorScreen(message = uiState.message)
             }
-
             UiState.Loading -> {
                 NewsListShimmer()
             }

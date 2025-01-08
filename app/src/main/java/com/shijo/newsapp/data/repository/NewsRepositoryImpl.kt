@@ -45,4 +45,8 @@ class NewsRepositoryImpl @Inject constructor(
     override suspend fun upsertArticle(article: Article) {
         newsDao.upsert(article = article)
     }
+
+    override fun getSavedArticleList(): Flow<List<Article>> {
+       return newsDao.getArticles()
+    }
 }

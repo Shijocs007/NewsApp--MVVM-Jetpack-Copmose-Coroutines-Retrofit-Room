@@ -10,6 +10,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import com.shijo.newsapp.data.models.toArticle
 import com.shijo.newsapp.data.models.toArticleString
+import com.shijo.newsapp.presentation.bookmarks.BookmarkScreen
+import com.shijo.newsapp.presentation.bookmarks.BookmarkViewmodel
 import com.shijo.newsapp.presentation.common.ErrorScreen
 import com.shijo.newsapp.presentation.country.CountryListScreen
 import com.shijo.newsapp.presentation.country.CountryListViewModel
@@ -56,7 +58,17 @@ fun HomeNavGraph(
             ErrorScreen(message = "Search screen will be implemented.")
         }
         composable<Route.BookmarkScreen> {
-            ErrorScreen(message = "Bookmark screen will be implemented")
+            val viewModel: BookmarkViewmodel = hiltViewModel()
+            BookmarkScreen(
+                uiState = viewModel.uiState.collectAsState().value,
+                navigateToDetails = { article ->
+                    navController.navigate(
+                        Route.NewsDetailsScreen(
+                            article = article.toArticleString()
+                        )
+                    )
+                }
+            )
         }
         composable<Route.NewsDetailsScreen> { entry ->
             val route : Route.NewsDetailsScreen = entry.toRoute()
