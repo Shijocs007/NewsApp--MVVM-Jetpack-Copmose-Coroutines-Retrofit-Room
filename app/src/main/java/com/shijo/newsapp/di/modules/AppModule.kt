@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.google.gson.Gson
+import com.shijo.newsapp.data.api.NetworkInterceptor
 import com.shijo.newsapp.data.api.NewsApiService
 import com.shijo.newsapp.data.room.NewsDao
 import com.shijo.newsapp.data.room.NewsDatabase
@@ -16,6 +17,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -36,13 +39,29 @@ class AppModule {
     @Singleton
     fun provideNetworkService(
         @BaseUrl baseUrl: String,
-        gsonConverterFactory: GsonConverterFactory
+        gsonConverterFactory: GsonConverterFactory,
+        okHttpClient: OkHttpClient
     ): NewsApiService {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
+            .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
             .create(NewsApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideCommonInterceptor(): Interceptor {
+        return NetworkInterceptor()
+    }
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(networkInterceptor: Interceptor): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(networkInterceptor)
+            .build()
     }
 
 
