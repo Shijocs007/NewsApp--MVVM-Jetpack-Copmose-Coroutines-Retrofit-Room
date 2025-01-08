@@ -21,7 +21,7 @@ fun ErrorScreen(message: String) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.errorContainer)
+            .background(MaterialTheme.colorScheme.primaryContainer)
     ) {
         Text(
             text = message,
@@ -29,7 +29,7 @@ fun ErrorScreen(message: String) {
                 fontWeight = FontWeight.Bold,
                 fontSize = Dimes.TextLarge
             ),
-            color = MaterialTheme.colorScheme.error,
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
             modifier = Modifier
                 .padding(Dimes.PaddingMedium)
                 .align(Alignment.Center)

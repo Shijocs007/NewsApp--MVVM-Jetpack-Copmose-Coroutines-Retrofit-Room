@@ -19,6 +19,8 @@ import com.shijo.newsapp.presentation.headlines.HeadlineScreen
 import com.shijo.newsapp.presentation.headlines.HeadlineViewModel
 import com.shijo.newsapp.presentation.news_details.DetailsScreen
 import com.shijo.newsapp.presentation.news_details.NewsDetailsViewModel
+import com.shijo.newsapp.presentation.search.SearchScreen
+import com.shijo.newsapp.presentation.search.SearchViewModel
 import com.shijo.newsapp.utils.Constants
 
 @Composable
@@ -55,7 +57,20 @@ fun HomeNavGraph(
 
         }
         composable<Route.SearchScreen> {
-            ErrorScreen(message = "Search screen will be implemented.")
+            val viewModel: SearchViewModel = hiltViewModel()
+            SearchScreen(
+                state = viewModel.state.collectAsState().value,
+                navigateToDetails = {
+                    navController.navigate(
+                        Route.NewsDetailsScreen(
+                            article = it.toArticleString()
+                        )
+                    )
+                },
+                onEvent = {
+                    viewModel.onEvent(it)
+                }
+            )
         }
         composable<Route.BookmarkScreen> {
             val viewModel: BookmarkViewmodel = hiltViewModel()
