@@ -7,5 +7,4 @@ object Constants {
     const val REFRESH_SCREEN = "refresh_screen"
 
     const val BASE_URL = "https://newsapi.org/v2/"
-    const val API_KEY = "1c492daaf9554c5e81d4d66c4b216d8f"
 }

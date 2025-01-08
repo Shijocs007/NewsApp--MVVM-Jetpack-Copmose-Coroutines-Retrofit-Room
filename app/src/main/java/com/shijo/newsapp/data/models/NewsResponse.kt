@@ -1,7 +1,7 @@
 package com.shijo.newsapp.data.models
 import com.google.gson.annotations.SerializedName
 
-data class TopHeadlinesResponse(
+data class NewsResponse(
     @SerializedName("status")
     val status: String = "",
     @SerializedName("totalResults")

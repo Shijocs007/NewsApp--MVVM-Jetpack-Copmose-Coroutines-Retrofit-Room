@@ -1,7 +1,6 @@
 package com.shijo.newsapp.data.api
 
 import com.shijo.newsapp.BuildConfig
-import com.shijo.newsapp.utils.Constants
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException

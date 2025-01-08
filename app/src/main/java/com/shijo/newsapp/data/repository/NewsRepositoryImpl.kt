@@ -2,7 +2,11 @@ package com.shijo.newsapp.data.repository
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.shijo.newsapp.data.api.NewsApiService
+import com.shijo.newsapp.data.api.NewsSearchPagingSource
 import com.shijo.newsapp.data.models.Article
 import com.shijo.newsapp.data.models.Country
 import com.shijo.newsapp.data.models.defaultCountry
@@ -28,6 +32,18 @@ class NewsRepositoryImpl @Inject constructor(
                         && !article.imageUrl.isNullOrEmpty()
             }
         }
+    }
+
+    override fun searchNews(searchQuery: String): Flow<PagingData<Article>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = {
+                NewsSearchPagingSource(
+                    api = newsApiService,
+                    searchQuery = searchQuery
+                )
+            }
+        ).flow
     }
 
     override suspend fun getSelectedCountry(): Country {
