@@ -69,7 +69,8 @@ fun HomeNavGraph(
                 },
                 onEvent = { event ->
                     viewModel.onEvent(event = event)
-                }
+                },
+                state = viewModel.uiState.collectAsState().value
             )
         }
         composable<Route.CountryListScreen> {

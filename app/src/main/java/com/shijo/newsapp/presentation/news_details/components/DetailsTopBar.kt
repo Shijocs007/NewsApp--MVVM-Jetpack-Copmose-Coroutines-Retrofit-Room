@@ -30,6 +30,7 @@ fun DetailsTopBar(
     onShareClick: () -> Unit,
     onBookMarkClick: () -> Unit,
     onBackClick: () -> Unit,
+    isBookMarked : Boolean = false
 ) {
 
     TopAppBar(
@@ -58,7 +59,7 @@ fun DetailsTopBar(
 
             IconButton(onClick = onBookMarkClick) {
                 Icon(
-                    painter = painterResource(id = R.drawable.bookmark_0),
+                    painter = if(isBookMarked) painterResource(id = R.drawable.bookmark_1) else painterResource(id = R.drawable.bookmark_0),
                     contentDescription = null
                 )
             }
@@ -84,10 +85,10 @@ fun DetailsTopBar(
 fun DetailsTopBarPreview() {
     NewsAppTheme(dynamicColor = false) {
         DetailsTopBar(
-            onShareClick = { /*TODO*/ },
-            onBookMarkClick = { /*TODO*/ },
-            onBrowsingClick = {}) {
-
+            isBookMarked = false,
+            onShareClick = {  },
+            onBookMarkClick = { },
+            onBackClick = { },
+            onBrowsingClick = { })
         }
     }
-}

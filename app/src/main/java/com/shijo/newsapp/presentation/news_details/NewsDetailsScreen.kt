@@ -34,6 +34,7 @@ import com.shijo.newsapp.utils.UIComponent
 fun DetailsScreen(
     article: Article,
     uiEvent: UIComponent?,
+    state: NewsDetailsState,
     navigateUp: () -> Unit,
     onEvent: (NewsDetailsEvent) -> Unit
 ) {
@@ -49,6 +50,9 @@ fun DetailsScreen(
             }
         }
     }
+    LaunchedEffect(Unit) {
+        onEvent(NewsDetailsEvent.CheckBookmarkedStatus(article = article))
+    }
 
     Column(
         modifier = Modifier
@@ -56,6 +60,7 @@ fun DetailsScreen(
             .statusBarsPadding()
     ) {
         DetailsTopBar(
+            isBookMarked = state.isBookeMarked,
             onBrowsingClick = {
                 Intent(Intent.ACTION_VIEW).also {
                     it.data = Uri.parse(article.url)
@@ -133,6 +138,7 @@ fun DetailsScreenPreview() {
                 url = "https://consent.google.com/ml?continue=https://news.google.com/rss/articles/CBMiaWh0dHBzOi8vY3J5cHRvc2F1cnVzLnRlY2gvY29pbmJhc2Utc2F5cy1hcHBsZS1ibG9ja2VkLWl0cy1sYXN0LWFwcC1yZWxlYXNlLW9uLW5mdHMtaW4td2FsbGV0LXJldXRlcnMtY29tL9IBAA?oc%3D5&gl=FR&hl=en-US&cm=2&pc=n&src=1",
                 imageUrl = "https://media.wired.com/photos/6495d5e893ba5cd8bbdc95af/191:100/w_1280,c_limit/The-EU-Rules-Phone-Batteries-Must-Be-Replaceable-Gear-2BE6PRN.jpg"
             ),
+            state = NewsDetailsState()
         )
     }
 }

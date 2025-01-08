@@ -24,9 +24,8 @@ class NewsDetailsViewModel @Inject constructor(
     private val _uiEvents = MutableStateFlow<UIComponent?>(null)
     val uiEvents: StateFlow<UIComponent?> = _uiEvents
 
-    init {
-
-    }
+    private val _uiState = MutableStateFlow(NewsDetailsState())
+    val uiState: StateFlow<NewsDetailsState> = _uiState
 
 
     fun onEvent(event: NewsDetailsEvent) {
@@ -41,17 +40,26 @@ class NewsDetailsViewModel @Inject constructor(
                     }
                 }
             }
+
+            is NewsDetailsEvent.CheckBookmarkedStatus -> {
+                viewModelScope.launch {
+                    val article = getSavedArticleUseCase(id = event.article.url)
+                    _uiState.value = NewsDetailsState(isBookeMarked = article != null)
+                }
+            }
         }
     }
 
     private suspend fun deleteArticle(article: Article) {
         deleteArticleUseCase(article = article)
         _uiEvents.value = UIComponent.Toast("Article deleted")
+        _uiState.value = NewsDetailsState(isBookeMarked = false)
     }
 
     private suspend fun upsertArticle(article: Article) {
         upsertArticleUseCase(article = article)
         _uiEvents.value = UIComponent.Toast("Article Inserted")
+        _uiState.value = NewsDetailsState(isBookeMarked = true)
     }
 
 }
