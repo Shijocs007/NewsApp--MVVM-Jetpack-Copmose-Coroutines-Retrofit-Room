@@ -9,4 +9,10 @@ interface NewsRepository {
     fun getTopHeadlines(country: String): Flow<List<Article>>
 
     suspend fun getSelectedCountry() : Country
+
+    suspend fun getSavedArticle(id: String) : Article?
+
+    suspend fun deleteArticle(article: Article)
+
+    suspend fun upsertArticle(article: Article)
 }

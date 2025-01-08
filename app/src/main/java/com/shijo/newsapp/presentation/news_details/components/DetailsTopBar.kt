@@ -6,16 +6,19 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.shijo.newsapp.R
 import com.shijo.newsapp.ui.theme.NewsAppTheme
@@ -36,7 +39,13 @@ fun DetailsTopBar(
             actionIconContentColor = MaterialTheme.colorScheme.primary,
             navigationIconContentColor = MaterialTheme.colorScheme.primary,
         ),
-        title = {},
+        title = {
+            Text(
+                text = stringResource(R.string.bookmarks),
+                style = MaterialTheme.typography.titleLarge,
+                color= MaterialTheme.colorScheme.primary
+            )
+        },
         navigationIcon = {
             IconButton(onClick = onBackClick) {
                 Icon(
@@ -49,7 +58,7 @@ fun DetailsTopBar(
 
             IconButton(onClick = onBookMarkClick) {
                 Icon(
-                    imageVector = Icons.Filled.Star,
+                    painter = painterResource(id = R.drawable.bookmark_0),
                     contentDescription = null
                 )
             }

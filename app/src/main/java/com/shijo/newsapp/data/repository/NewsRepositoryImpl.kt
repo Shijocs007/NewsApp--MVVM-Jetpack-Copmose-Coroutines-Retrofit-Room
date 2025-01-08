@@ -33,4 +33,16 @@ class NewsRepositoryImpl @Inject constructor(
     override suspend fun getSelectedCountry(): Country {
         return newsDao.getSelectedCountry() ?:defaultCountry
     }
+
+    override suspend fun getSavedArticle(id: String): Article? {
+        return newsDao.getArticle(url = id)
+    }
+
+    override suspend fun deleteArticle(article: Article) {
+        newsDao.delete(article = article)
+    }
+
+    override suspend fun upsertArticle(article: Article) {
+        newsDao.upsert(article = article)
+    }
 }

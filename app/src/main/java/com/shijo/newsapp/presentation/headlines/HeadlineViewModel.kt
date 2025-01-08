@@ -4,12 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shijo.newsapp.domain.usecases.country.GetSelectedCountry
 import com.shijo.newsapp.domain.usecases.news.GetTopHeadLines
-import com.shijo.newsapp.presentation.common.UiState
+import com.shijo.newsapp.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -41,6 +43,7 @@ class HeadlineViewModel @Inject constructor(
 
             val selectedCountry = getSelectedCountry()
             getTopHeadLines(selectedCountry.code.lowercase())
+                .flowOn(Dispatchers.IO)
                 .catch { e ->
                     _uiState.value = UiState.Error(e.toString())
                 }

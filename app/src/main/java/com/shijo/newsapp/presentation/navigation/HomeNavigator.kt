@@ -16,6 +16,7 @@ import com.shijo.newsapp.presentation.country.CountryListViewModel
 import com.shijo.newsapp.presentation.headlines.HeadlineScreen
 import com.shijo.newsapp.presentation.headlines.HeadlineViewModel
 import com.shijo.newsapp.presentation.news_details.DetailsScreen
+import com.shijo.newsapp.presentation.news_details.NewsDetailsViewModel
 import com.shijo.newsapp.utils.Constants
 
 @Composable
@@ -59,10 +60,15 @@ fun HomeNavGraph(
         }
         composable<Route.NewsDetailsScreen> { entry ->
             val route : Route.NewsDetailsScreen = entry.toRoute()
+            val viewModel: NewsDetailsViewModel = hiltViewModel()
             DetailsScreen(
                 article = route.article.toArticle(),
+                uiEvent = viewModel.uiEvents.collectAsState().value,
                 navigateUp = {
                     navController.navigateUp()
+                },
+                onEvent = { event ->
+                    viewModel.onEvent(event = event)
                 }
             )
         }

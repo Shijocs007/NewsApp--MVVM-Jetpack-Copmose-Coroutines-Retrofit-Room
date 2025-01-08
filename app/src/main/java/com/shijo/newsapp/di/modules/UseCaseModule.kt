@@ -6,7 +6,10 @@ import com.shijo.newsapp.domain.repository.OnboardingRepository
 import com.shijo.newsapp.domain.usecases.country.GetSelectedCountry
 import com.shijo.newsapp.domain.usecases.country.LoadCountryList
 import com.shijo.newsapp.domain.usecases.country.UpdateCountrySelectionStatus
+import com.shijo.newsapp.domain.usecases.news.DeleteArticle
+import com.shijo.newsapp.domain.usecases.news.GetSavedArticle
 import com.shijo.newsapp.domain.usecases.news.GetTopHeadLines
+import com.shijo.newsapp.domain.usecases.news.UpsertArticle
 import com.shijo.newsapp.domain.usecases.onboarding.GetOnboardingStatus
 import com.shijo.newsapp.domain.usecases.onboarding.SaveOnboardingStatus
 import dagger.Module
@@ -41,5 +44,16 @@ class UseCaseModule {
     @Provides
     fun providedUpdateCountrySelectionUseCase(repository: CountryListRepository) =
         UpdateCountrySelectionStatus(repository)
+
+    @Provides
+    fun providedGetSavedArticleUseCase(repository: NewsRepository) =
+        GetSavedArticle(repository)
+
+    @Provides
+    fun providedDeleteArticleUseCase(repository: NewsRepository) =
+        DeleteArticle(repository)
+    @Provides
+    fun providedUpsertArticleUseCase(repository: NewsRepository) =
+        UpsertArticle(repository)
 
 }

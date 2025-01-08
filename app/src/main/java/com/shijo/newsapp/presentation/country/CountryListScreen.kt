@@ -23,7 +23,7 @@ import com.shijo.newsapp.data.models.Country
 import com.shijo.newsapp.data.models.defaultCountry
 import com.shijo.newsapp.presentation.common.ErrorScreen
 import com.shijo.newsapp.presentation.common.LoadingScreen
-import com.shijo.newsapp.presentation.common.UiState
+import com.shijo.newsapp.utils.UiState
 import com.shijo.newsapp.presentation.country.components.CountryItem
 import com.shijo.newsapp.ui.theme.Dimes
 import com.shijo.newsapp.ui.theme.NewsAppTheme

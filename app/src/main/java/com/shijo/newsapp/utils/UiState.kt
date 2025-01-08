@@ -1,4 +1,4 @@
-package com.shijo.newsapp.presentation.common
+package com.shijo.newsapp.utils
 
 sealed interface UiState<out T> {
 

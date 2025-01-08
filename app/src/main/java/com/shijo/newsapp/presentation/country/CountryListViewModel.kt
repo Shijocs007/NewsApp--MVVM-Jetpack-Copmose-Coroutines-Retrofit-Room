@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.shijo.newsapp.data.models.Country
 import com.shijo.newsapp.domain.usecases.country.LoadCountryList
 import com.shijo.newsapp.domain.usecases.country.UpdateCountrySelectionStatus
-import com.shijo.newsapp.presentation.common.UiState
+import com.shijo.newsapp.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
