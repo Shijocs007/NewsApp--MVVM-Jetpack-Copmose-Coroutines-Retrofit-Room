@@ -27,11 +27,6 @@ class SearchViewModel @Inject constructor(
     private var _uiState = MutableStateFlow(SearchState())
     val state: StateFlow<SearchState> = _uiState
 
-    init {
-        performSearchRequest("")
-    }
-
-
     fun onEvent(event: SearchEvent) {
         when(event) {
             is SearchEvent.SearchNews -> {
@@ -47,18 +42,16 @@ class SearchViewModel @Inject constructor(
         }
 
     private fun performSearchRequest(searchQuery : String) {
-        viewModelScope.launch {
             _uiState.update {
                 it.copy(searchQuery = searchQuery, isLoading = true)
             }
             val articleFlow = searchNews(searchQuery = searchQuery)
+                .flowOn(Dispatchers.IO)
                 .cachedIn(viewModelScope)
 
             _uiState.update {
                 it.copy(searchQuery = searchQuery, isLoading = false, articles = articleFlow)
             }
-
-        }
     }
 
 }
