@@ -1,5 +1,6 @@
 package com.shijo.newsapp.data.api
 
+import com.shijo.newsapp.BuildConfig
 import com.shijo.newsapp.utils.Constants
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -13,7 +14,7 @@ class NetworkInterceptor : Interceptor {
 
         // Add common query parameters
         val url = originalUrl.newBuilder()
-            .addQueryParameter("apiKey", Constants.API_KEY)
+            .addQueryParameter("apiKey", BuildConfig.API_KEY)
             .build()
 
         // Add common headers
