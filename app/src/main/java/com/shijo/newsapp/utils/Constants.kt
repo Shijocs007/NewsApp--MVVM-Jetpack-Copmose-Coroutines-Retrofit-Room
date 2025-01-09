@@ -7,4 +7,6 @@ object Constants {
     const val REFRESH_SCREEN = "refresh_screen"
 
     const val BASE_URL = "https://newsapi.org/v2/"
+
+    const val SEARCH_TIMEOUT = 300L
 }
