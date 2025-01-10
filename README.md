@@ -5,10 +5,10 @@ A modern news application built using **Clean Architecture** to ensure scalabili
 ## Tech Stack
 - **Architecture**: Clean Architecture, MVVM
 - **Networking**: Retrofit
-- **Local Storage**: Room Database
+- **Local Storage**: Room Database, Preferences DataStore
 - **Asynchronous Programming**: Coroutines, Flow
 - **Language**: Kotlin
-- **Dependency Injection**: Hilt/Dagger (if applicable)
+- **Dependency Injection**: Dagger-Hilt
 
 ## Features
 1. **Onboarding Screen**
