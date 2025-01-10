@@ -36,3 +36,6 @@ A modern news application built using **Clean Architecture** to ensure scalabili
 
 5. **Bookmarks**
     - Users can save news articles to bookmarks for later viewing. Bookmarked articles are accessible offline with the help of the Room Database.  
+
+## Screenshots 📱
+![News App](https://firebasestorage.googleapis.com/v0/b/cybrillatest-ad60b.appspot.com/o/news-app-screenshots.png?alt=media&token=9d51d674-3aee-4503-8ae6-ba2b9e991eb3)
