@@ -45,7 +45,7 @@ class CountryListViewModel @Inject constructor(
     }
 
     private fun loadCountries() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             loadCountryList()
                 .catch { e ->
                     _uiState.value = UiState.Error(e.toString())
