@@ -8,10 +8,14 @@ A modern news application built using **Clean Architecture** to ensure scalabili
    git https://github.com/Shijocs007/NewsApp--MVVM-Jetpack-Copmose-Coroutines-Retrofit-Room.git
    
 2. Go to https://newsapi.org/ and create an API key.
-3. In the app/build.gradle file, replace the API_KEY in the buildConfigField with your own API key:
-   ```bash
-   buildConfigField("String", "API_KEY", "\"your_api_key_here\"")
-4. Sync the project and run the app on your device or emulator.
+3. Set up NDK for Secure API Key Storage.
+   - Go to File > Settings (Windows/Linux) or Android Studio > Preferences (Mac).
+   - In the SDK Manager window, select the SDK Tools tab.
+   - Check CMake and NDK (Side by side) and click Apply to install them.
+   
+4. Replace the API Key
+   - In the `app/cpp/` directory, open the `.cpp` file (e.g., `native-lib.cpp`).
+   - Replace the placeholder `"YOUR_API_KEY_HERE"` with your actual API key.
 
 ## Tech Stack
 - **Architecture**: Clean Architecture, MVVM
