@@ -23,7 +23,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        buildConfigField("String", "API_KEY", "\"Add your api key here\"")
     }
 
     buildTypes {
@@ -52,6 +51,12 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path = File("cpp", "CMakeLists.txt");
+            version = "3.22.1"
         }
     }
 }
